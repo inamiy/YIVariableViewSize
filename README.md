@@ -1,11 +1,18 @@
-YIVariableViewSize
-==================
+YIVariableViewSize 1.0.0
+========================
 
 Layout subviews first, then its container. Not using AutoLayout, works on iOS5+.
 
 (developed in #objectivechackathon [Put Objective C Back On The Map](https://objectivechackathon.appspot.com/))
 
 <img src="https://raw.github.com/inamiy/YIVariableViewSize/master/Screenshots/screenshot1.png" alt="ScreenShot1" width="225px" style="width:225px;" />
+
+Install via [CocoaPods](http://cocoapods.org/)
+----------
+
+```
+pod 'YIVariableViewSize'
+```
 
 How to use
 ----------
