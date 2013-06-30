@@ -41,6 +41,11 @@
 //        self.subview2.top = self.subview1.bottom;
 //    }
 //
+//    - (CGFloat)paddingBottomForVariableViewSize
+//    {
+//        return 10;
+//    }
+//
 @protocol YIVariableViewSize <NSObject>
 
 @optional
@@ -48,8 +53,8 @@
 - (void)resizeSubviewsWithFittingSize:(CGSize)fittingSize; // fittingSize = argument of -sizeThatFits:
 - (void)positionSubviews;
 
-@property (nonatomic) CGFloat paddingBottomForVariableViewSize;
-@property (nonatomic) CGFloat paddingRightForVariableViewSize;
+- (CGFloat)paddingBottomForVariableViewSize;
+- (CGFloat)paddingRightForVariableViewSize;
 
 @end
 
