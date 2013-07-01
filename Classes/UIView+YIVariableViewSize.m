@@ -20,7 +20,7 @@
     CGFloat bottom = -CGFLOAT_MAX;
     
     for (UIView* subview in self.subviews) {
-        if (!subview.hidden && subview.alpha > 0.01 && subview.bottom > bottom) {
+        if (!subview.hidden /*&& subview.alpha > 0.01*/ && subview.bottom > bottom) {
             bottom = subview.bottom;
             view = subview;
         }
@@ -35,7 +35,7 @@
     CGFloat right = -CGFLOAT_MAX;
     
     for (UIView* subview in self.subviews) {
-        if (!subview.hidden && subview.alpha > 0.01 && subview.right > right) {
+        if (!subview.hidden /*&& subview.alpha > 0.01*/ && subview.right > right) {
             right = subview.right;
             view = subview;
         }
@@ -46,7 +46,17 @@
 
 - (void)sizeToFitWithMaxSize:(CGSize)maxSize
 {
-    self.size = [self sizeThatFits:maxSize];
+    CGSize fitSize = [self sizeThatFits:maxSize];
+    
+    if (fitSize.width > maxSize.width) {
+        fitSize.width = maxSize.width;
+    }
+    
+    if (fitSize.height > maxSize.height) {
+        fitSize.height = maxSize.height;
+    }
+    
+    self.size = fitSize;
 }
 
 @end
