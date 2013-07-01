@@ -1,4 +1,4 @@
-YIVariableViewSize 1.0.0
+YIVariableViewSize 1.0.1
 ========================
 
 Layout subviews first, then its container. Not using AutoLayout, works on iOS5+.
@@ -18,7 +18,7 @@ How to use
 ----------
 
 `YIVariableViewSize` is actually an abstract concept written as ObjC-protocol style.
-Thus, You should conform your UIView subclass to `<YIVariableViewSize>` protocol and implement its methods as follows:
+Thus, your job is to conform your UIView subclass to `<YIVariableViewSize>` protocol and implement its methods something like this:
 
 ```
 - (CGSize)sizeThatFits:(CGSize)size
