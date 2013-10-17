@@ -95,6 +95,8 @@
         [self positionSubviews];
     }
     
+    size = [self YIVariableViewSize_sizeThatFits:size];
+    
     if ([self respondsToSelector:@selector(paddingBottomForVariableViewSize)]) {
         size.height = self.mostBottomVisibleSubview.bottom + self.paddingBottomForVariableViewSize;
     }
