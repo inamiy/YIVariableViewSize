@@ -18,6 +18,10 @@
 {
     [super viewDidLoad];
     
+#if defined(__IPHONE_7_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
+    
     self.variableSizeView.maxWidthForSubviews = 260;
     [self.variableSizeView sizeToFit];
 }
@@ -36,7 +40,19 @@
 - (IBAction)handleTextAndSizeToFitButton:(id)sender
 {
     [self handleTextButton:sender];
+    
+#if defined(__IPHONE_7_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+    //
+    // NOTE: needs a little delay here for iOS7, or text sometimes gets cropped when label-frame expanded (for some reason)
+    //
+    double delayInSeconds = 0.01;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self handleSizeToFitButton:sender];
+    });
+#else
     [self handleSizeToFitButton:sender];
+#endif
 }
 
 @end
