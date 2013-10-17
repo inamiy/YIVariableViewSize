@@ -11,6 +11,8 @@
 #import "ViewUtils.h"
 #import <objc/runtime.h>
 
+#define IS_IOS_AT_LEAST(ver)    ([[[UIDevice currentDevice] systemVersion] compare:ver] != NSOrderedAscending)
+
 
 @implementation UIView (YIVariableViewSize)
 
@@ -54,6 +56,18 @@
     
     if (fitSize.height > maxSize.height) {
         fitSize.height = maxSize.height;
+    }
+    
+    //
+    // Avoid unexpected-tail truncation by forcefully incrementing sizeThatFits-width for iOS7.
+    //
+    // Developer Forums: iOS 7 UILabel Issue
+    // https://devforums.apple.com/message/886809
+    //
+    if (IS_IOS_AT_LEAST(@"7.0")) {
+        if (fitSize.width+3 <= maxSize.width) {
+            fitSize.width += 3; // FIXME: don't use +3 as magic number...
+        }
     }
     
     self.size = fitSize;
