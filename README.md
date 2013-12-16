@@ -1,4 +1,4 @@
-YIVariableViewSize 1.0.1
+YIVariableViewSize 1.0.2
 ========================
 
 Layout subviews first, then its container. Not using AutoLayout, works on iOS5+.
